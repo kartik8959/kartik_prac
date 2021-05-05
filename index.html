@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>started with vue </title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+
+</head>
+<body>
+    <div id="app">
+        <section class="section">
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-image">
+                        <div class="image is-4by3">
+                            <img src="a1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-3">{{name}}</p>
+            
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p>{{description}}</p>
+                            <hr>
+                            {{numOfInterest}}
+                            <hr>
+                            <a href="link">Google</a>
+
+                            <hr>
+                            <div class="tags">
+                                <span class="tag" v-for="interest in interests">{{interest}}</span>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+        
+    </div>
+    
+    
+    
+
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                name:"Vue hero",
+                description:"I am description for vue hero",
+                image:"https://bulma.io/images/placeholders/128x128.pn",
+                link:"https://google.com",
+                interests:[
+                "vue",
+                "react",
+                "python"
+                ]
+            },
+            computed:{
+                numOfInterest()
+                {
+                    return"no of intrest "+this.interests.length;
+                }
+
+
+            }
+        })
+    </script>
+    
+    
+</body>
+</html>

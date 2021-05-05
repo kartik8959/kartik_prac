@@ -1,6 +1,7 @@
 i = 4
 d = 4.0
 s = 'HackerRank '
+#https://github.com/kartik8959/kartik_prac.git
 # Declare second integer, double, and String variables.
 
 # Read and save an integer, double, and String to your variables.
