@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+    <meta name="theme-color" content="#EE00AA" />
+    {% block title_block %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico.' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% block css_block %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+    <div class="header p-2">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-6  ">
+                    <div class="row">
+                        <col-6>
+                            <i class="fa fa-bank text-info fa-3x  "></i>
+                        </col-6>
+                        <col-6>
+                            <h2 class="inline ttl lead font-weight-bold pl-2 mt-1 m-0">kartik software solutions</h2>
+                            <p class="pl-2 m-0  ">we build your future</p>
+                        </col-6>
+                    </div>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="container ">
+                        
+                        <div class=" btn-group p-0 ">
+                            <button type="button" class="h-1 mr-2 dropdown-toggle btn btn-success pb-0 pt-0"
+                                data-toggle="dropdown">city</button>
+                            <div class="dropdown-menu">
+                                <a  class="dropdown-item" href="#" >jabalpur</a>
+                                <a  class="dropdown-item" href="#" >indore</a>
+                                <a  class="dropdown-item" href="#" >bhopal</a>
+                                <a class="dropdown-item"  href="#" >gwalior</a>
+                            </div>
+                            <p class="gear">
+                                <i class="fa fa-gear text-muted fa-2x pl-2 pt-2 "></i>
+                            </p>
+
+                        </div>
+                        
+                       
+                        
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container-fluid my-1 ">
+        {% block extra_block%}
+            
+                            
+        {% endblock %} 
+        </div>
+    </div>
+
+
+   
+
+
+    <div class="body mt-4 mb-5">
+        {% block main_block %}
+
+        {% endblock %}
+
+    </div>
+
+    <div class="footer mt-5 text-center ftr "  >
+        <footer class=" bg-light p-1 mb-2 "><a href="https://www.facebook.com/kartik.jodhwani"><i class=" fa fa-facebook shadow-sm px-2 fico mx-2 p-1"></i></a><i class="fa mx-2 px-2 fico shadow-sm fa-google  p-1"></i><i class="fa px-2 mx-2 fico shadow-sm fa-twitter  p-1"></i><i class="fa px-2 mx-2 shadow-sm fico fa-youtube  p-1"></i><i class="fa px-2 mx-2 fico fa-snapchat-ghost shadow-sm  p-1"></i></footer>
+        <footer class="bg-light p-1 font-weight-bold ">&copylive@kartiksoftwaresolutions </footer>
+    </div>
+{% block jsblock %}
+
+{% endblock %}
+</body>
+
+</html>
