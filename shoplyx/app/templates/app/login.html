@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+   <form action="" method="post" novalidate class="shadow p-5">
+    {% csrf_token %}
+    {% for frm in form %}
+    <div class="form-group">
+        {{frm.label_tag}} {{frm}} <small class="text-danger">{{frm.errors|striptags}}</small>
+    </div>
+    {% endfor %}
+    <small class="mt-2"> <a href="{% url 'password_rest' %}" >Forget password</a></small><br>
+    <input type="submit" value="Login" class="mt-4 btn btn-primary">
+    <div class="text-center fw-bold text-primary mt-3"> New to Kartik Brand ? <a href="{% url 'customerregistration' %}" class="text-info">Create an Account</a></div>
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
