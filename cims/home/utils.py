@@ -25,9 +25,9 @@ def send_otp(request):
     print(request.session['otp'])
 
 
-    account_sid = "ACc10debfe7839ea2af78286d53cd84e9b"
+    account_sid = ""
 
-    auth_token  = "bd7c3d7319a16c1c89b96765dd6e082e"
+    auth_token  = ""
 
     client = Client(account_sid, auth_token)
 
