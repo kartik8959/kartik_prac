@@ -1,8 +1,9 @@
-{% extends 'institutes/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
+
 {% block title_block %}
-    <title style="background-color: blue;">Institute Signup</title>
+    <title style="background-color: blue;">Institute Signin</title>
 {% endblock %}
 
 {% block css_block %}
@@ -11,6 +12,27 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
+{% block extra_block%}
+<div class="menu m-1 border-bottom ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-7  d-flex justify-content-end ml-5 pl-3"> 
+                <nav class="nav nav-pills  ">
+                    {% if user.is_authenticated %}
+                        <p class="mt-2">Welcome, <strong style="color: darkorange; font-size: 1.4rem;font-family: 'Courier New', Courier, monospace;">{{ user.get_username }}</strong></p>
+                    {% else %}
+                        <p class="mt-2">Welcome, <strong  style="color: darkorange; font-size: 1.2rem;font-family: 'Courier New', Courier, monospace;">USER.</strong> </p>
+    
+                    {% endif %}
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</div>
+                            
+{% endblock %} 
 
 
 
@@ -36,9 +58,9 @@
 
                 {% endfor %}
             {% endif %}
-                <h4 class="border-bottom pb-2 w-50  pt-2 text-success">Institute signup</h4>
-                <form action="" method="post" class="w-75 pt-3  ">
-                    {% csrf_token %}
+                <h4 class="border-bottom pb-2 w-50  pt-2 text-success">Institute signin</h4>
+                <form action="/institute/Login/" method="post" class="w-75 pt-3  ">
+                    
                     
                     <div class="form-group">
                         <label for="name " class="text-info font-weight-bold">Name</label>
@@ -50,20 +72,7 @@
                         <small class="form-text text-danger hide" id="error_username">INVALID USER NAME</small>
                         
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="text-info font-weight-bold">Email</label>
-                        <div class="d-flex">
-
-                            <i class="fa fa-envelope icon p-2 fa-lg bg-info text-light "></i> 
-                            
-                            {{form.email}}
-
-                        </div>
-                        <small class="form-text text-muted" id="help_email" name="h_mail">enter valid email id.</small>
-                        <small class="form-text text-danger hide" id="error_email">INVALID EMAIL ID.</small>
-                        
-                        
-                    </div>
+                    
                     <div class="form-group">
                         <label for="pwd"class="text-info font-weight-bold" >Password</label>
                         <div class="d-flex">
@@ -76,28 +85,20 @@
                         <small class="form-text text-muted" id="help_password">enter valid password.Min 6 chars allowed </small>
                         <small class="form-text text-danger hide" id="error_password">INVALID PASSWORD.</small>
                     </div>
-                    <div class="form-group ">
-                        <label for="num" class="text-info font-weight-bold">Contact No</label>
-                        <div class="d-flex">
-                            <i class="fa fa-phone icon p-2 fa-lg bg-info text-light"></i>
-                            <!-- <input type="number" name="" class="form-control" id="num"></input> -->
-                            {{form.contact_no}}
-                        </div>
-                        <small class="form-text text-muted" id="help_contact_no">enter valid indian contact number</small>
-                        <small class="form-text text-danger hide" id="error_contact_no">INVALID CONTACT NUMBER.</small>
-                    </div>
                     
-                        <div class="g-recaptcha" data-sitekey="6LeIsdsaAAAAAMVkEzogT_CLUFR7-x6CnxBMhCpe"  ></div>
+                    
+                        <div class="g-recaptcha" data-sitekey=""></div>
 
-                        <p>already user? <a href="/accounts/login">Login</a></p>
+                        <div> New User ? <a href="{% url 'signup' %}">Register</a> </div>
                     <div class="form-group text-center">
                         <input type="submit"  class="btn btn-outline-info btn-lg  font-weight-bold mt-4 text-center" value="Signup">
                     </div>
                     
                         
-         
+                        {% csrf_token %}
 
                 </form>
+
                 
             </div>
             
@@ -106,5 +107,5 @@
 {% endblock %}
 
 {% block jsblock %}
-<script src="{% static 'js/signup.js' %}"> </script>
+ <script src="{% static 'js/signin.js' %}"> </script> 
 {% endblock %}

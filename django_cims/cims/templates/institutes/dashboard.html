@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title_block %}
+    <title>Institute Dashboard</title>
+{% endblock %}
+
+{% block main_block %}
+<div class="container">
+        <div class="row">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item font-weight-bold">{{request.user}} (dashboard)</li>
+                                <li class="breadcrumb-item font-weight-bold"><a href="/institute/courses">courses</a></li>
+                               
+                            </ol>
+                        </nav>
+                    </div>
+        </div>
+    <div class="row">
+    
+        <div class="col">
+            <h2 class="display-4">Dashboard</h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

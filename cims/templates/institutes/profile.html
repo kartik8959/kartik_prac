@@ -1,0 +1,215 @@
+{% extends 'institutes/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    <title style="background-color: blue;">Institute profile</title>
+{% endblock %}
+
+{% block css_block %}
+    
+<link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<style>
+    #picup
+    {
+
+        border-radius:5px;
+        border:2px;
+        border-color: bisque;
+        box-shadow: 0 0 3px grey;
+
+    }
+    .dropzone .dz-message .dz-button
+    {
+        color:#ccc;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    #institute_pic
+    {
+        height:130px;
+        width:200px;
+
+    }
+    #otp_box
+    {
+        display: none;
+    }
+    
+    
+</style>
+
+{% endblock %}
+
+
+{% block main_block %}
+    <div class="container  ">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item "><a href="/institute/dashboard/">{{request.user}}(dashboard)</a></li>
+                        <li class="breadcrumb-item active font-weight-bold">institute profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row ">
+            
+            
+                <div class="col-5 text-center  pt-5 ">
+
+                {% if request.session.logo %}
+                    <img src="{{request.session.logo}}" class="img-fluid img-thumbnail rounded" title="logo" id="institute_pic"  alt="">
+                {% else %}
+                    <img src="{% static 'images/no-image.png' %}" class="img-fluid img-thumbnail rounded" title="no image" id="institute_pic"  alt="">
+                {% endif %}
+                    <h4 class="border-bottom pb-2 w-50  pt-2 text-success">upload new pic</h4>
+                    <form class="dropzone dropzone-previews" id="picup">
+                        {% csrf_token %}
+                    </form>
+                    <input type="button" class="btn btn-sm btn-outline-info" id="btn" value="Upload">
+                </div>
+            
+            <div class="col-6 offset-1 ins-frm pb-5  ">
+            {% if form.errors %}
+                {% for k,v in form.errors.items %}
+
+                
+                    {% for err in v %}
+                    <div class="alert alert-danger w-75" role="alert">
+                        <div>{{err}}</div>
+                      </div>
+                    {% endfor %}
+
+                {% endfor %}
+            {% endif %}
+                <h4 class="border-bottom pb-2 w-50  pt-2 text-success">Institute Profile</h4>
+                <form action="" id="details_form" method="post" class="w-75 pt-3  ">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="id_name" class="text-info font-weight-bold">Institute Name</label>
+                       
+                            
+                            {{form.name}}
+                        
+                        <small class="form-text text-muted" id="help_username">enter valid user name.min 5 chars.allowed chars  { a-zA-Z0-9@_ }</small>
+                        <small class="form-text text-danger hide" id="error_username">INVALID USER NAME</small>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="id_details" class="text-info font-weight-bold">Institute Detail</label>
+                        <div class="d-flex">
+                            
+                            {{form.details}}
+                        </div>
+                        <small class="form-text text-muted" id="help_username">enter valid user name.min 5 chars.allowed chars  { a-zA-Z0-9@_ }</small>
+                        <small class="form-text text-danger hide" id="error_username">INVALID USER NAME</small>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="id_address" class="text-info font-weight-bold">Address
+                            
+                            {{form.address}}
+
+                          
+                        <small class="form-text text-muted" id="help_email" name="h_mail">enter valid email id.</small>
+                        <small class="form-text text-danger hide" id="error_email">INVALID EMAIL ID.</small>
+                        
+                        
+                    </div>
+
+                     <div class="form-group">
+                        <label for="id_city" class="text-info font-weight-bold">city
+                            
+                            {{form.city}}
+
+                          
+                        <small class="form-text text-muted" id="help_email" name="h_mail">enter valid email id.</small>
+                        <small class="form-text text-danger hide" id="error_email">INVALID EMAIL ID.</small>
+                        
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="id_start_date"class="text-info font-weight-bold" >start_date</label>
+                        
+                            
+                                {{form.start_date}}
+                            <small class="form-text text-muted" id="help_password">enter valid password.Min 6 chars allowed </small>
+                            <small class="form-text text-danger hide" id="error_password">INVALID PASSWORD.</small>
+                    </div>
+                    <div class="form-group ">
+                        <label for="id_contact" class="text-info font-weight-bold">Contact No</label>
+                        
+                            
+                            {{form.contact}}
+                    
+                        <small class="form-text text-muted" id="help_contact_no">enter valid indian contact number</small>
+                        <small class="form-text text-danger hide" id="error_contact_no">INVALID CONTACT NUMBER.</small>
+                    </div>
+
+                    <div class="form-group" id="otp_box">
+                        <label for="id_otp" class="text-info font-weight-bold">Enter Otp</label>
+                        <div class="row">
+                            <div class="col-3"><input type="text" maxlength="4" id="id_otp" class="form-control"></div>
+                            <div class="col-7"><input type="button" value="verify otp" id="check_otp" class="btn btn-info "></div>
+                        </div>
+                        
+                    
+                        <small class="form-text text-muted" id="help_contact_no">enter valid indian contact number</small>
+                        <small class="form-text text-danger hide" id="error_contact_no">INVALID CONTACT NUMBER.</small>
+                    </div>
+                    
+                        
+                    <div class="form-group text-center">
+                        <input type="submit" id="submit_btn"  class="btn btn-outline-info btn-lg  font-weight-bold mt-4 text-center" value="save profile">
+                        <input type="button" id="sent_otp" class="btn btn-outline-info btn-lg mr-3 font-weight-bold mt-4 text-center" value="send otp">
+                    </div>
+                    
+                    
+                        
+         
+
+                </form>
+                
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block jsblock %}
+<script src="{% static 'js/dropzone.min.js' %}"> </script> 
+<script>
+    Dropzone.autoDiscover = false;
+
+    Dropzone.options.picup = {
+        paramName: 'file',
+        maxFilesize: 1,
+        uploadMultiple: false,
+        createImageThumbnails: true,
+        maxFiles: 1,
+        acceptedFiles: '.jpeg,.png,.gif,.jpg',
+        addRemoveLinks: true,
+        autoProcessQueue: false
+    };
+    let institute_pic=document.querySelector("#institute_pic");
+
+    let dropzone = new Dropzone('#picup', {url: '/institute/profile_pic_upload/'});
+
+    let btn = document.querySelector('#btn');
+    btn.addEventListener('click',()=>{
+        institute_pic.style.display='none';
+        dropzone.processQueue();
+        
+
+    });
+    
+    
+</script>
+<script src="{% static 'js/profile_form.js' %}"></script>
+
+{% endblock %}
