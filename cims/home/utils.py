@@ -20,7 +20,7 @@ def send_otp(request):
     contact=request.GET.get('contact_no')
     otp=randrange(1111,9999)
 
-    print(f"****** {otp} *********")
+   
     request.session['otp']=otp
     print(request.session['otp'])
 
@@ -33,7 +33,7 @@ def send_otp(request):
 
     message = client.messages.create(
         to="+91"+contact, 
-        from_="+14784199136",
+        from_="",
         body="Wellcome to kartik software solutions   "+str(otp))
 
     print(message.sid)
