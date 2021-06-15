@@ -1,11 +1,4 @@
 import requests,json
-
-
-
-
-        
-
-
 def recapcha_test(request):
     grecapresp=request.POST.get('g-recaptcha-response')
     secretkey=''
