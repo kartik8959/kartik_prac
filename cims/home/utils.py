@@ -1,9 +1,6 @@
 from twilio.rest import Client
 from institutes.models import Institutes
 from random import randrange
-
-
-
 from .models import City
 
 
